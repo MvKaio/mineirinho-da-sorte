@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submeter Cartelas - Mineirinho da Sorte</title>
+    <link rel="stylesheet" href="cartelas.css">
+    <script src="cartelas.js"></script>
+    <link rel="icon" href="assets/favicon.ico" sizes="256x256">
+</head>
+<body>
+    <div class="start">
+        <header>
+            <a href="index.html" class="voltar"><h2>Home</h2></a>
+            <h1 class="header">Cartela #1</h1>
+            <h2 onclick="sortear()" class="sortear">Sortear</h2>
+        </header>
+        <div class="main">
+            <img src="assets/prev.svg" onclick="decrement()" alt="Anterior" class="prev">
+            <div class="cartela"></div>
+            <img src="assets/next.svg" onclick="increment()" alt="Próximo" class="next">
+        </div>
+    </div>
+</body>
+</html>

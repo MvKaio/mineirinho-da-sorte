@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400&display=swap');
+
+body{
+    background: #283044;
+}
+
+h3{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.start{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 30px;
+    color: #F79256;
+    font-weight: 400;
+    font-size: 72px;
+    padding: 0;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartela{
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(10, 1fr);
+    width: 90%;
+}
+
+.spot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #F79256;
+    font-weight: 300;
+    font-size: 32px;
+    width: 70px;
+    height: 70px;
+    margin: 4px;
+    background: url('assets/spot.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70px;
+    transition: 0.8s;
+}
+
+.checked{
+    color: #540b03;
+    background: url('assets/spot.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70px;
+}
+
+.spot:hover{
+    cursor: pointer;
+}
+
+.prev, .next{
+    width: 75px;
+    filter: invert(63%) sepia(14%) saturate(5204%) hue-rotate(325deg) brightness(79%) contrast(101%);
+}
+
+.prev{
+    margin-right: 10px;
+}
+
+.next{
+    margin-left: 10px;
+}
+
+.prev:hover, .next:hover{
+    filter: invert(16%) sepia(70%) saturate(2344%) hue-rotate(337deg) brightness(105%) contrast(90%);
+    cursor: pointer;
+}
+
+header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.sortear, .voltar, .voltar h2, .voltar:link, .voltar:visited, .voltar:active, .voltar:hover{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #F79256;
+}
+
+.voltar{
+    margin-right: 50px;
+}
+
+.sortear{
+    margin-left: 50px;
+}
+
+.sortear:hover{
+    cursor: pointer;
+}

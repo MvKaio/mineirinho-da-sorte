@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400&display=swap');
+
+body{
+    background: #283044;
+}
+
+.start{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.digite, .bemvindo{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 0 0 10px 0;
+}
+
+.bemvindo{
+    color: #9E2A2B;
+    font-weight: 400;
+    font-size: 62px;
+    padding: 0;
+}
+
+.digite{
+    color: #F79256;
+    font-weight: 300;
+    padding: 0;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form button{
+    display: none;
+}
+
+#numero{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    height: 30px;
+    width: 25px;
+    border: none;
+    border-bottom: #CB5E41 3px solid;
+    border-radius: 2px;
+    color: #F79256;
+    background: #283044;
+    transition: border-bottom 1.2s;
+    transition: width 1.2s;
+}
+
+#numero:focus{
+    width: 40px;
+    border: none;
+    outline: none;
+    border-bottom: #F79256 3px solid;
+}

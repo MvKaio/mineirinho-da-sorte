@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400&display=swap');
+
+body{
+    background: #283044;
+}
+
+.start{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#sorteio, #melhor, #todas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sorteio .field{
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#melhor .field{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1px;
+    grid-template-rows: repeat(5, 1fr);
+}
+
+#todas .field{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1px;
+    grid-template-rows: repeat(5, 1fr);
+}
+
+#todas .topo{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.selecione{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: #F79256;
+    font-weight: 300;
+    padding: 0;
+}
+
+.title{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 20px;
+    color: #F79256;
+    font-weight: 400;
+    font-size: 42px;
+    padding: 0;
+}
+
+#sorteio .spot{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #F79256;
+    font-weight: 300;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    background: url('assets/spot.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    transition: 0.8s;
+}
+
+#melhor .spot, #todas .spot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #F79256;
+    font-weight: 300;
+    font-size: 32px;
+    width: 70px;
+    height: 70px;
+    margin: 4px;
+    background: url('assets/spot.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70px;
+    transition: 0.8s;
+}
+
+.header{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 30px;
+}
+
+.header{
+    color: #F79256;
+    font-weight: 400;
+    font-size: 72px;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.editar , .voltar, .voltar h2, .voltar:link, .voltar:visited, .voltar:active, .voltar:hover{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #F79256;
+}
+
+.voltar{
+    margin-right: 50px;
+}
+
+.editar {
+    margin-left: 50px;
+}
+
+.editar:hover, #sorteio .spot:hover{
+    cursor: pointer;
+}
+
+.checked{
+    color: #540b03 !important;
+    background: url('assets/spot.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 70px !important;
+}
+
+.prev, .next{
+    width: 35px;
+    filter: invert(63%) sepia(14%) saturate(5204%) hue-rotate(325deg) brightness(79%) contrast(101%);
+}
+
+.prev{
+    margin-right: 3px;
+}
+
+.next{
+    margin-left: 3px;
+}
+
+.prev:hover, .next:hover{
+    filter: invert(16%) sepia(70%) saturate(2344%) hue-rotate(337deg) brightness(105%) contrast(90%);
+    cursor: pointer;
+}

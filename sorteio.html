@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio - Mineirinho da Sorte</title>
+    <link rel="stylesheet" href="sorteio.css">
+    <script src="sorteio.js"></script>
+    <link rel="icon" href="assets/favicon.ico" sizes="256x256">
+</head>
+<body>
+    <div class="start">
+        <header>
+            <a href="index.html" class="voltar"><h2>Home</h2></a>
+            <h1 class="header">Sorteio</h1>
+            <h2 onclick="editar()" class="editar">Editar Cartelas</h2>
+        </header>
+
+        <div class="main">
+            <div id="sorteio">
+                <h2 class="selecione">Selecione os números sorteados</h2>
+                <div class="field">
+                    
+                </div>
+            </div>
+            <div id="melhor">
+                <h1 class="title">Melhor Cartela</h1>
+                <div class="field">
+
+                </div>
+            </div>
+            <div id="todas">
+                <div class="topo">
+                    <img src="assets/prev.svg" onclick="decrement()" alt="Anterior" class="prev">
+                    <div class="title"></div>
+                    <img src="assets/next.svg" onclick="increment()" alt="Próximo" class="next">
+                </div>
+                <div class="field">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
