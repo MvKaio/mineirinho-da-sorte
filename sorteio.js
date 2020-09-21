@@ -5,6 +5,8 @@ var numeros = null; // Numeros sorteados so far
 var numtitile = 0; // Title da secao Todas
 
 function editar(){
+    localStorage.setItem('numeros', JSON.stringify(numeros));
+    localStorage.setItem('from','!home');
     window.document.location = "cartelas.html"
 }
 
@@ -28,6 +30,10 @@ function sorteia(id){
 
     let field = document.querySelector("#melhor .field");
 
+    let anterior = cartelas.melhor();
+
+    let on = null;
+
     if(numeros[id]){
         spot.classList.add("checked");
 
@@ -43,11 +49,44 @@ function sorteia(id){
         }
     }
 
-    cartelas[cartelas.melhor()].display(field);
+    if(anterior == cartelas.melhor()){
+        
+        on = cartelas[anterior].indexOf(id);
+        if(on != -1){
+            spot = field.getElementsByClassName('spot')[on];
+
+            if(spot.classList.contains('uncheck')) spot.classList.remove('uncheck');
+            if(spot.classList.contains('checked')) spot.classList.remove('checked');
+            if(spot.classList.contains('check')) spot.classList.remove('check');
+
+            if(numeros[id]){
+                spot.classList.toggle('check');
+            }
+            else {
+                spot.classList.toggle('uncheck');
+            }
+        }
+
+    }
+    else{
+        cartelas[cartelas.melhor()].display(field);
+    }
     
     field = document.querySelector("#todas .field");
-    console.log(active);
-    cartelas[active].display(field);
+    on = cartelas[active].indexOf(id);
+    if(on == -1) return;
+    spot = field.getElementsByClassName('spot')[on];
+
+    if(spot.classList.contains('uncheck')) spot.classList.remove('uncheck');
+    if(spot.classList.contains('checked')) spot.classList.remove('checked');
+    if(spot.classList.contains('check')) spot.classList.remove('check');
+
+    if(numeros[id]){
+        spot.classList.toggle('check');
+    }
+    else {
+        spot.classList.toggle('uncheck');
+    }
 
 }
 
@@ -64,10 +103,23 @@ function init(e){
                 spot.classList.add('spot');
                 spot.innerText = `${this.entries[i]}`;
                 if(numeros[this.entries[i]] != 0){
-                    spot.classList.add('checked');
+                    spot.classList.add('check');
                 }
                 field.appendChild(spot);
             }
+        }
+        cartelas[i].indexOf = function(id){
+            let l = 0;
+            let r = 19;
+            while(l < r){
+                let m = l + Math.floor((r - l)/2);
+
+                if(this.entries[m] >= id)
+                    r = m;
+                else l = m + 1;
+            }
+            if(this.entries[l] == id) return l;
+            return -1;
         }
         cartelas[i].sorte = 0;
         cartelas[i].poe = function(id){
@@ -108,17 +160,20 @@ function init(e){
 
     let field = document.querySelector("#sorteio .field");
 
-    numeros = new Array(61);
+    numeros = JSON.parse(localStorage.getItem('numeros'));
 
     for(let i = 1; i <= 60; i += 1){
-        numeros[i] = 0;
-
         let spot = document.createElement('div');
         spot.classList.add('spot');
         spot.innerText = `${i}`;
         spot.onclick = function () { 
             sorteia(i); 
         };
+
+        if(numeros[i]){
+            spot.classList.add('checked');
+        }
+
         field.appendChild(spot);
     }
 
@@ -131,6 +186,13 @@ function init(e){
     numtitle = document.querySelector("#todas .title");
     numtitle.innerText = "Cartela #1";
     
+    for(let i = 1; i <= 60; i += 1){
+        if(numeros[i] == true){
+                for(let j = 0; j < cartelas.length; j += 1){
+                    cartelas[j].poe(i);
+                }
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {

@@ -17,7 +17,19 @@ function increment(){
 
 function set(id){
     cards[atual].nums[id-1] = !cards[atual].nums[id-1];
-    cards[atual].display();
+
+    let spot = document.getElementsByClassName('cartela')[0];
+    spot = spot.getElementsByClassName('spot')[id-1];
+
+    if(spot.classList.contains('uncheck')) spot.classList.remove('uncheck');
+    if(spot.classList.contains('check')) spot.classList.remove('check');
+
+    if(cards[atual].nums[id-1] == true){
+        spot.classList.toggle('check');
+    }
+    else {
+        spot.classList.toggle('uncheck');
+    }
 }
 
 function sortear(){
@@ -36,12 +48,19 @@ function sortear(){
         ok &= (cards[i].entries.length == 20);
 
         if(ok == false){
-            alert(`A Cartela #${i+1} possui ${cards[i].entries.length} números`);
+            alert(`Erro na Cartela #${i+1}: ${cards[i].entries.length}/20 números`);
             break;
         }
     }
 
     if(ok){
+
+        if(localStorage.getItem('from') == 'home'){
+            let trap = new Array(61);
+            for(let i = 1; i <= 60; i+=1) numeros[i] = 0;
+            localStorage.setItem('numeros', JSON.stringify(trap));
+        }
+
         localStorage.setItem(`cartelas`, JSON.stringify(cards));
         window.document.location = './sorteio.html';
     }
@@ -59,29 +78,17 @@ class card{
         for(let i = 1; i <= 60; i += 1){
             let spot = document.createElement('div');
             spot.classList.add('spot');
-            spot.id = `${i}`
             spot.innerText = `${i}`;
             spot.onclick = function () { 
-                let arg = i;
-                set(arg); 
+                set(i); 
             };
-            if(this.nums[i-1] == 1){
-                spot.classList.add('checked');
-            }
             field.appendChild(spot);
+            if(this.nums[i-1] == 1){
+                spot.classList.toggle('check');
+            }
         }
 
     }
-
-    size(){
-        let ans = 0;
-        for(let i = 0; i < 60; i += 1){
-            if(this.nums[i] == 1)
-                ans += 1;
-        }
-        return ans;
-    }
-
 }
 
 function init(e){
@@ -89,14 +96,39 @@ function init(e){
 
     numtitle = document.querySelector(".start .header");
     atual = 0;
-    cards = new Array();
-    cards.length = localStorage.carts;
 
-    for(var i = 0; i < cards.length; i += 1){
-        cards[i] = new card();
+    if(localStorage.getItem('from') == 'home'){
+        cards = new Array();
+        cards.length = localStorage.carts;
+
+        for(var i = 0; i < cards.length; i += 1){
+            cards[i] = new card();
+        }
+        
+        cards[0].display();
     }
-    
-    cards[0].display();
+    else{
+        cards = JSON.parse(localStorage.getItem('cartelas'));
+
+        for(let i = 0; i < cards.length; i += 1){
+            cards[i].display = function(){
+                field.innerHTML = "";
+                for(let i = 1; i <= 60; i += 1){
+                    let spot = document.createElement('div');
+                    spot.classList.add('spot');
+                    spot.innerText = `${i}`;
+                    spot.onclick = function () { 
+                        set(i); 
+                    };
+                    field.appendChild(spot);
+                    if(this.nums[i-1] == 1){
+                        spot.classList.toggle('check');
+                    }
+                }
+            }
+        }
+        cards[0].display();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {

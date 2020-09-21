@@ -88,7 +88,6 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: 30px;
-    transition: 0.8s;
 }
 
 #melhor .spot, #todas .spot{
@@ -107,6 +106,64 @@ body{
     background-position: center;
     background-size: 70px;
     transition: 0.8s;
+}
+
+@keyframes to_check{
+
+    from{
+        color: #F79256;
+        background: url('assets/spot.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 70px;
+    }
+
+    to{
+        color: #540B03;
+        background: url('assets/spot.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80px;
+    }
+}
+
+@keyframes to_uncheck{
+
+    from{
+        color: #540B03;
+        background: url('assets/spot.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80px;
+    }
+
+    to{
+        color: #F79256;
+        background: url('assets/spot.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 70px;
+    }
+}
+
+.check{
+    animation-name: to_check;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.uncheck{
+    animation-name: to_uncheck;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.checked{
+    color: #540b03 !important;
+    background: url('assets/spot.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 70px !important;
 }
 
 .header{
@@ -146,14 +203,6 @@ header{
 
 .editar:hover, #sorteio .spot:hover{
     cursor: pointer;
-}
-
-.checked{
-    color: #540b03 !important;
-    background: url('assets/spot.svg') !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: 70px !important;
 }
 
 .prev, .next{

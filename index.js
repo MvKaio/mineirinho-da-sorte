@@ -13,8 +13,14 @@ const init = function(){
 
     btn.addEventListener('click', () => {
         carts = input.value;
-        localStorage.setItem('carts', carts);
-        window.document.location = './cartelas.html';
+        if(isNaN(carts)){
+            alert("Digite um número válido de cartelas!");
+        }
+        else{
+            localStorage.setItem('from','home');
+            localStorage.setItem('carts', carts);
+            window.document.location = './cartelas.html';
+        }
     });
 }
 
