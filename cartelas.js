@@ -57,7 +57,7 @@ function sortear(){
 
         if(localStorage.getItem('from') == 'home'){
             let trap = new Array(61);
-            for(let i = 1; i <= 60; i+=1) numeros[i] = 0;
+            for(let i = 1; i <= 60; i+=1) trap[i] = 0;
             localStorage.setItem('numeros', JSON.stringify(trap));
         }
 
